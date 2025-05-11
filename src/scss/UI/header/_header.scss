@@ -1,0 +1,86 @@
+@use "base/variables" as var;
+@use "base/mixins" as mix;
+
+.header {
+  min-height: 60rem;
+  background-image: url(../img/grafico.svg), url(../img/grafico.svg),
+    linear-gradient(to right, rgba(var.$negro, 1), rgba(var.$negro, 0.5)),
+    image-set(
+      url(../img/header.avif) 1x,
+      url(../img/header.webp) 1x,
+      url(../img/header.jpg) 1x
+    );
+  background-repeat: no-repeat;
+  background-size: 400px, 400px, cover, cover;
+  background-position: top left, bottom right, center center, center center;
+
+  &__contenedor {
+    @include mix.contenedor;
+    margin-left: 2rem;
+  }
+
+  &__navegacion {
+    padding: 5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    @include mix.tablet {
+      justify-content: flex-end;
+      margin-right: 2rem;
+    }
+  }
+
+  &__enlace {
+    @include mix.enlace;
+  }
+
+  &__form {
+    display: flex;
+  }
+
+  &__submit {
+    @extend .header__enlace;
+  }
+
+  &__contenido {
+    padding-top: 10rem;
+    @include mix.tablet {
+      padding-top: 5rem;
+      margin-left: 5rem;
+    }
+  }
+
+  &__logo {
+    @include mix.texto-fluido(2rem, 8rem);
+    @include mix.texto-degradado(var.$azul, var.$secundario);
+    text-align: center;
+    @include mix.tablet {
+      text-align: left;
+      display: inline-block;
+    }
+  }
+
+  &__texto {
+    font-size: 3rem;
+    font-weight: var.$bold;
+    color: var.$blanco;
+    margin: 2rem 0;
+    text-align: center;
+    text-transform: uppercase;
+    @include mix.tablet {
+      text-align: left;
+    }
+    &--modalidad {
+      font-size: 2rem;
+    }
+  }
+
+  &__boton {
+    @include mix.boton(var.$secundario, var.$blanco);
+    text-transform: uppercase;
+    margin: 2rem 0;
+    @include mix.tablet {
+      width: auto;
+    }
+  }
+}

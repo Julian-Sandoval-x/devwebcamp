@@ -1,0 +1,50 @@
+@use "base/variables" as var;
+@use "base/mixins" as mix;
+
+.paginacion {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  @include mix.tablet {
+    justify-content: flex-end;
+  }
+
+  &__enlace {
+    color: var.$azul;
+    font-size: 1.8rem;
+
+    &--texto {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid var.$azul;
+
+      &:hover {
+        background-color: var.$azul;
+        color: var.$blanco;
+      }
+    }
+
+    &--numero {
+      font-weight: var.$bold;
+      display: none;
+
+      @include mix.tablet {
+        display: inline;
+      }
+    }
+
+    &--actual {
+      color: var.$gris;
+      font-weight: var.$bold;
+      display: none;
+      @include mix.tablet {
+        display: inline;
+      }
+    }
+  }
+}

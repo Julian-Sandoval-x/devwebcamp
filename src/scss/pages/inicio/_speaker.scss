@@ -1,0 +1,61 @@
+@use "base/variables" as var;
+@use "base/mixins" as mix;
+
+.speakers {
+  &__grid {
+    @include mix.contenedor;
+    @include mix.grid(1, 5rem);
+    @include mix.tablet {
+      @include mix.grid(2, 5rem);
+    }
+
+    @include mix.xl_desktop {
+      @include mix.grid(3, 5rem);
+    }
+  }
+}
+
+.speaker {
+  @include mix.card;
+
+  background-position: center top;
+  background-size: 350px;
+  background-repeat: no-repeat;
+
+  @for $i from 1 through 4 {
+    &:nth-child(4n + #{$i}) {
+      background-image: image-set(
+        url("../img/bg_#{$i}.avif") 1x,
+        url("../img/bg_#{$i}.webp") 1x,
+        url("../img/bg_#{$i}.png") 1x
+      );
+    }
+  }
+
+  &__imagen {
+    min-width: 35rem;
+
+    @include mix.tablet {
+      min-width: unset;
+    }
+  }
+
+  &__ubicacion {
+    color: var.$gris;
+    margin: 1rem 0;
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+
+  &__listado-skills {
+    @include mix.tags;
+  }
+}
+
+.speaker-sociales {
+  @include mix.menu-social(var.$negro, 3rem);
+
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}

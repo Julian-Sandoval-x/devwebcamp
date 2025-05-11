@@ -1,0 +1,43 @@
+@use "base/mixins" as mix;
+@use "base/variables" as var;
+
+.paquetes {
+  &__grid {
+    @include mix.contenedor;
+    @include mix.grid(1, 3rem);
+    @include mix.tablet {
+      @include mix.grid(3, 3rem);
+      align-items: start;
+    }
+  }
+
+  &__submit {
+    margin-top: 3rem;
+    @include mix.boton(var.$azul, var.$blanco);
+  }
+}
+
+.paquete {
+  @include mix.card;
+
+  &:nth-child(2) {
+    order: -1;
+
+    @include mix.tablet {
+      order: unset;
+    }
+  }
+
+  &__lista {
+    @include mix.reset-list;
+    line-height: 2;
+  }
+
+  &__precio {
+    font-size: 6rem;
+    margin: 3rem 0;
+    color: var.$azul;
+    font-weight: var.$black;
+    text-align: center;
+  }
+}

@@ -1,0 +1,9 @@
+@use "base/mixins" as mix;
+
+.auth {
+  @include mix.contenedor-sm;
+}
+
+.auth__texto {
+  text-align: center;
+}

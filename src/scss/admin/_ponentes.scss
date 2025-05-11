@@ -1,0 +1,25 @@
+@use "base/variables" as var;
+@use "base/mixins" as mix;
+
+.listado-ponentes {
+  @include mix.reset-list;
+  @include mix.grid(1, 1rem);
+
+  &__ponente {
+    color: var.$azul;
+    border: 1px solid var.$azul;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--seleccionado {
+      @extend .listado-ponentes__ponente;
+      background-color: var.$azul;
+      color: var.$blanco;
+    }
+  }
+}
